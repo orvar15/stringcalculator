@@ -50,7 +50,34 @@ public class CalculatorTest {
     	assertEquals(10, Calculator.add("3\n3,4"));
     }
 
-    
+    @Test
+    public void testNegativeNumbers() {
+    	try {
+    		Calculator.add("1,-2,2");
+    		Calculator.add("-1,2,2");
+    		Calculator.add("1,2,-2");
+    		Calculator.add("-1,-2,-2");
+    		Calculator.add("1,-2,-2");
+    	}
+    	catch (IllegalArgumentException e) {
+    		System.out.println("Negatives not allowed: " + e);
+    	}
+    }
 
+    @Test
+    public void testNumbersBiggerThanOneThousand() {
+    	assertEquals(2, Calculator.add("10011,2"));
+    	assertEquals(5, Calculator.add("2\n3,1005"));
+    	assertEquals(10, Calculator.add("5,5,10030"));
+    	assertEquals(15, Calculator.add("4,11\n11111"));
+    	assertEquals(1005, Calculator.add("1000,3,2"));
+    }
 
+    @Test
+    public void testWithNewDelimeter() {
+    	assertEquals(4, Calculator.add("//#\n2#2"));
+    	assertEquals(3, Calculator.add("//&\n3&2"));
+    	assertEquals(10, Calculator.add("//!!\n5!!5"));
+    	assertEquals(7, Calculator.add("//M\n3M4"));
+    }
 }
