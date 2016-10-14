@@ -41,4 +41,16 @@ public class CalculatorTest {
     	assertEquals(12, Calculator.add("1,1,10"));
     }
 
+    @Test 
+    public void testWhenNumersAreSplitWithNewLine() {
+    	assertEquals(3, Calculator.add("1,1\n1"));
+    	assertEquals(4, Calculator.add("1,1\n2"));
+    	assertEquals(6, Calculator.add("2\n2,2"));
+    	assertEquals(8, Calculator.add("3,3\n2"));
+    	assertEquals(10, Calculator.add("3\n3,4"));
+    }
+
+    
+
+
 }
