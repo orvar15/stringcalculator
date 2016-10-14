@@ -1,0 +1,2 @@
+# stringcalculator
+Hugbúnaðafræði TDD
